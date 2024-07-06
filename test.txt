@@ -1,0 +1,11 @@
+Once the main thread has executed all the lines of code from the source file, it enters the event loop and continually processes it in the defined phase order until there are no more callbacks to execute and no active handles or requests left. The event loop is the heart of the Node.js event-driven architecture.
+
+The event loop has several phases, each responsible for different types of callbacks or tasks. These phases are processed in a specific order.
+
+The main thread processes these phases in a continuous cycle. It will keep looping through the event loop as long as there are pending callbacks, active handles (e.g., open network connections, file I/O), or requests (e.g., active http.Server instances).
+
+When there are no more callbacks to execute and no active handles or requests left, the event loop will exit, and the Node.js process will terminate.
+
+It's important to note that the event loop can also be kept alive by active handles or requests, even if there are no callbacks left to execute. For example, if an HTTP server is still listening for incoming requests, the event loop will keep running, waiting for new events to process.
+
+In summary, once the main thread has executed all the lines of code from the source file, it enters the event loop and processes it continuously in the defined phase order. The event loop keeps running as long as there are pending callbacks, active handles, or requests. When there's nothing left to process, the event loop exits, and the Node.js process terminates.
